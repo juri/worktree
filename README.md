@@ -26,3 +26,7 @@ Example:
 
 Now running `git wta feature` will create brach `username/feature` starting from
 `main`, tracked in worktree `feature`.
+
+## Licensing
+
+This software is licensed under the terms of the MIT license. For details, see the file LICENSE.
