@@ -48,7 +48,7 @@ extension Worktrees {
             }
             let task = try Process.run(
                 git,
-                arguments: ["worktree", "add", "-b", "\(self.prefix)/\(self.folder)", self.folder, self.committish]
+                arguments: ["worktree", "add", "-b", "\(self.prefix)\(self.folder)", self.folder, self.committish]
             )
             task.waitUntilExit()
         }
