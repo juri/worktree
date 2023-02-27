@@ -42,9 +42,17 @@ extension Worktrees {
         @Argument(help: "Folder name")
         var folder: String
 
+        @Flag(help: "Don't strip duplicated prefix")
+        var allowDuplicatePrefix: Bool = false
+
         mutating func run() throws {
             guard let git = try path(executable: "git") else {
                 throw ValidationError("git not found in PATH")
+            }
+            if !self.allowDuplicatePrefix {
+                if self.folder.hasPrefix(self.prefix) {
+                    self.folder.removeFirst(self.prefix.count)
+                }
             }
             let task = try Process.run(
                 git,
